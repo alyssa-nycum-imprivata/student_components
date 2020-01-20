@@ -75,33 +75,33 @@ const students = [
 
 // code from branch 4: smaller_components
 
-const h1 = (name) => {
+const element = (type, content, className) => {
     return `
-    <h1 class="xx-large">${name}</h1>
+    <${type} class="${className}">${content}</${type}>
     `
 }
-
-const section = (subject) => {
-    return `
-    <section class="bordered dashed section--padded">${subject}</section>
-    `
-}
-
-const aside = (info) => {
-    return `
-    <aside class="pushRight">${info}</aside>
-    `
-}
-
 
 const createStudentComponent = (student) => {
+    let className = "";
+    if (student.score >= 60) {
+        className = "passing";
     return `
         <div class="student">
-        ${h1(student.name)}
-        ${section(student.subject)}
-        ${aside(student.info)}
+        ${element("h1", student.name, "xx-large passing")}
+        ${element("section", student.subject, "bordered dashed section--padded")}
+        ${element("aside", student.info, "pushRight")}
+        </
+        `
+    } else {
+        className = "failing";
+        return `
+        <div class="student">
+        ${element("h1", student.name, "xx-large failing")}
+        ${element("section", student.subject, "bordered dashed section--padded")}
+        ${element("aside", student.info, "pushRight")}
         </div>
     `
+    }
 }
 
 const studentContainer = document.querySelector("#container")
@@ -110,6 +110,10 @@ for (let i = 0; i < students.length; i++) {
     const student = students[i]
     studentContainer.innerHTML += createStudentComponent(student)
 }
+
+
+
+
 
 
 
