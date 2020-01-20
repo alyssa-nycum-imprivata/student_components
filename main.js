@@ -73,9 +73,11 @@ const students = [
     }
 ]
 
-const h1 = (score, name) => {
+// code from branch 4: smaller_components
+
+const h1 = (name) => {
     return `
-    <h1 class="xx-large ${score < 60 ? 'failing' : 'passing'}">${name}</h1>
+    <h1 class="xx-large">${name}</h1>
     `
 }
 
@@ -95,7 +97,7 @@ const aside = (info) => {
 const createStudentComponent = (student) => {
     return `
         <div class="student">
-        ${h1(student.score, student.name)}
+        ${h1(student.name)}
         ${section(student.subject)}
         ${aside(student.info)}
         </div>
@@ -108,6 +110,48 @@ for (let i = 0; i < students.length; i++) {
     const student = students[i]
     studentContainer.innerHTML += createStudentComponent(student)
 }
+
+
+
+
+
+// code from branch 3: smaller_components
+
+// const h1 = (score, name) => {
+//     return `
+//     <h1 class="xx-large ${score < 60 ? 'failing' : 'passing'}">${name}</h1>
+//     `
+// }
+
+// const section = (subject) => {
+//     return `
+//     <section class="bordered dashed section--padded">${subject}</section>
+//     `
+// }
+
+// const aside = (info) => {
+//     return `
+//     <aside class="pushRight">${info}</aside>
+//     `
+// }
+
+
+// const createStudentComponent = (student) => {
+//     return `
+//         <div class="student">
+//         ${h1(student.score, student.name)}
+//         ${section(student.subject)}
+//         ${aside(student.info)}
+//         </div>
+//     `
+// }
+
+// const studentContainer = document.querySelector("#container")
+
+// for (let i = 0; i < students.length; i++) {
+//     const student = students[i]
+//     studentContainer.innerHTML += createStudentComponent(student)
+// }
 
 
 
